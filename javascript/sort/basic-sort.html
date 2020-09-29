@@ -1,0 +1,23 @@
+<script>
+  let stringArr = [];
+
+  function generateNumberArray() {
+    for (let i = 0; i < 10; i++) {
+      let randomItem = Math.random() * 100;
+      stringArr.push(Math.ceil(randomItem));
+    }
+  }
+
+  // When sorting with number has 2 character, insert compare function is parameter of sort();
+  // return a - b : ascending
+  // return b - a : descending
+  function numberSort(arr) {
+    return arr.sort((a, b) => b - a);
+  }
+
+  // Basic sorting array
+  generateNumberArray();
+  console.log(`Array before: ${stringArr}`);
+  numberSort(stringArr);
+  console.log(`Array after: ${stringArr}`)
+</script>
