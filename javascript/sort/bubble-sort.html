@@ -1,0 +1,33 @@
+<script>
+  // Cách sort:
+  // Duyệt từ đầu đến cuối mảng, so sánh 2 phần tử kề nhau a[i] và a[i+1]
+  // Lớn hơn thì đổi chỗ, bé hơn thì giữ nguyên
+  // Sau lần lặp đầu tiên luôn luôn tìm được phần tử lớn nhất và để nó ở cuối mảng
+  // Các lần lặp tiếp theo không lặp qua các phần tử đã được sort và cứ thế sẽ tìm ra được phần tử lớn nhì, lớn ba
+
+  let arr1 = [1, 50, 39, 28, 40, 19, 456, 23, 239];
+
+  function swap(pos1, pos2) {
+    let temp = pos1;
+    pos1 = pos2;
+    pos2 = temp;
+  }
+
+  function bubbleSort(arr) {
+    // For này loop hết mảng từ phần tử arr[0] đến arr[arr.length - 1]
+    for (let i = 0; i < arr.length - 1; i++) {
+      // For này dùng để giảm số lần lặp xuống, chừa lại số cuối cùng được sort (thay vì mỗi lần loop hết cả mảng)
+      for (let j = 0; j < arr.length - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          let temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+  }
+
+  console.log(`Array before: ${arr1}`);
+  bubbleSort(arr1);
+  console.log(`Array after: ${arr1}`);
+</script>
