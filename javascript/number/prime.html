@@ -1,0 +1,34 @@
+<script>
+  // Số nguyên tố là số chỉ chia hết cho 1 và chính nó (2 3 5 7 11 13 17 19 23...)
+  // Mọi số nguyên tố có thể được biểu diễn dưới dạng 6n + 1 hoặc 6n-1 ngoại trừ 2 và 3, trong đó n là số tự nhiên.
+  // 2 và 3 là hai số nguyên tố liên tiếp duy nhất
+  // Mọi số nguyên chẵn lớn hơn 2 có thể được biểu diễn dưới dạng tổng của hai số nguyên tố.
+
+  function isPrime(number) {
+
+    if (number <= 1) {
+      return false;
+    }
+    
+    // Check trường hợp chia hết được cho 2 -> thì cũng không phải là số nguyên tố
+    if(number % 2 == 0) {
+      return false;
+    }
+
+    // Bắt đầu check từ 3
+    // Vì chỉ có 2 là số nguyên tố chẵn duy nhất, nên bước nhảy i sẽ tăng 2 đơn vị sau mỗi lần lặp
+    // Chỉ loop tới sqrt(number) thay vì number -> Tối ưu loop
+    /**
+     * Làm thế nào bạn biết nếu một số n là một số nguyên tố? Kiểm tra tất cả các số, từ 2 đến (n-1).  Với mọi giá trị i, hãy kiểm tra xem n có chia hết cho i hay không.  Nếu bạn tìm thấy một i như vậy, thì n không phải là một số nguyên tố.  Nhưng bạn có thực sự cần phải kiểm tra tất cả các giá trị?  Không, ngay sau khi bạn đạt đến căn bậc hai của n, bạn sẽ kiểm tra cùng một "cặp" giá trị.  Nói cách khác, sqrt ở đó để giới hạn số lượng thử nghiệm được thực hiện, do đó cải thiện hiệu suất.
+     **/
+    for (let i = 3; i < Math.sqrt(number); i+=2) {
+      if (number % i == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  console.log(isPrime(3));
+  console.log(isPrime(4));
+</script>
