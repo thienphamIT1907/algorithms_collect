@@ -1,0 +1,58 @@
+<script>
+  // Cách 1:
+  //  - Khởi tạo 2 biến chứa 2 số đầu tiên của dãy là 0 và 1, cùng 1 biến đếm
+  //  - Khi biến đếm còn bé hơn số giới hạn thì in số đầu tiên ra
+  //  - Sau đó khởi tạo biến num3 = tổng của 2 số trước nó, tăng count lên
+
+  let limitNumber = 10;
+
+  function getFibonacci1(limit) {
+    let
+      num1 = 0,
+      num2 = 1,
+      count = 0;
+
+    while (count < limit) {
+      console.log(`${num1} `);
+
+      let num3 = num2 + num1;
+      num1 = num2;
+      num2 = num3;
+      count++;
+    }
+  }
+  getFibonacci1(limitNumber);
+
+  // Cách 2: Sử dụng đệ quy
+  function getFibonacci2(limit) {
+    if (limit <= 1) {
+      return limit;
+    } else {
+      return getFibonacci2(limit - 1) + getFibonacci2(limit - 2);
+    }
+  }
+
+  for (let i = 0; i < limitNumber; i++) {
+    console.log(getFibonacci2(i) + ' ');
+  }
+
+  // Cách 3: Dùng mảng
+  //  - Tạo 1 mảng có length = limitNumber
+  //  - Khai báo arr[0] = 0; arr[1] = 1;
+  //  - 
+  function getFibonacci3(limit) {
+    let arr = new Array(limit + 2);
+    arr[0] = 0;
+    arr[1] = 1;
+
+    for(let i = 2; i <= limit; i++) {
+      arr[i] = arr[i - 1] + arr[i - 2];
+    }
+
+    return arr[limit];
+  }
+
+  for(let i = 0; i < limitNumber; i++) {
+    console.log(getFibonacci3(i) + ' ');
+  }
+</script>
