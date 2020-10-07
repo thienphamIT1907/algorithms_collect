@@ -1,0 +1,24 @@
+<script>
+  const quickSort = (arr) => {
+    if (arr.length < 2) return arr;
+    // *** lấy phần tử cuối của 'arr' làm 'pivot'
+    const pivot = arr[arr.length - 1];
+
+    const left = [];
+    const right = [];
+
+    let currentItem;
+    // *** 'i < pivotIndex' => chúng ta sẽ không loop qua 'pivot' nữa
+    for (let i = 0; i < arr.length - 1; i++) {
+      currentItem = arr[i];
+      if (currentItem < pivot) {
+        left.push(currentItem);
+      } else {
+        right.push(currentItem);
+      }
+    }
+    return [...quickSort(left), pivot, ...quickSort(right)];
+  }
+  console.log(quickSort([100, 2, 5, 4, 7, 5, 6, 8, 0, 12, 34, 15]));
+// *** => [0, 2, 4, 5, 5, 6, 7, 8, 12, 15, 34, 100]
+</script>
